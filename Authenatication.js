@@ -1,1 +1,1 @@
-console.log("Authentication and added sidebar");
+console.log("Authentication along with Notification and Sidebar");
