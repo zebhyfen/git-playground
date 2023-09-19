@@ -24,21 +24,20 @@ jobs:
         DEST_REPO_URL="https://github.com/zebhyfen/git-playground-copy.git"
         BRANCH_NAME="${{ github.ref }}"
         
-        echo "Cloning the destination repository..."
+        echo "Cloning the destination repository... $DEST_REPO_URL"
         git clone "$DEST_REPO_URL" destination_repo
         cd destination_repo
 
-        echo "Checking out the branch..."
+        echo "Checking out the branch... $BRANCH_NAME"
         git checkout -B "$BRANCH_NAME"
 
-        echo "Fetching changes from the source repository..."
+        echo "Fetching changes from the source repository... $SOURCE_REPO_URL"
         git fetch "$SOURCE_REPO_URL" "+refs/heads/*:refs/remotes/source/*"
 
-        echo "Merging changes from the source repository..."
+        echo "Merging changes from the source repository... $SOURCE_REPO_URL"
         git merge "source/$BRANCH_NAME" --no-edit
 
-        echo "Pushing changes to the destination repository..."
-        echo "Dest Repo URL is: $DEST_REPO_URL"
+        echo "Pushing changes to the destination repository... $DEST_REPO_URL"
         git push "$DEST_REPO_URL" "$BRANCH_NAME"
 
       env:
