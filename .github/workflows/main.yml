@@ -32,9 +32,9 @@ jobs:
 
     - name: Push Commits to Another Repository
       run: |
-        :let SOURCE_REPO_URL="https://github.com/${{ github.repository }}"
-        :let DEST_REPO_URL="https://github.com/zebhyfen/git-playground-copy.git"
-        :let BRANCH_NAME="${{ github.ref }}"
+        export SOURCE_REPO_URL="https://github.com/${{ github.repository }}"
+        export DEST_REPO_URL="https://github.com/zebhyfen/git-playground-copy.git"
+        export BRANCH_NAME="${{ github.ref }}"
         
         echo "Cloning the destination repository... $DEST_REPO_URL"
         git clone "$DEST_REPO_URL" destination_repo
