@@ -27,8 +27,8 @@ jobs:
 
     - name: Set Up Git
       run: |
-        git config --global user.email "$(git log -1 --pretty=format:'%ae')"
-        git config --global user.name "$(git log -1 --pretty=format:'%an')"
+        git config --global user.email "zeb.urrehman@hyfen.com" # $(git log -1 --pretty=format:'%ae')
+        git config --global user.name "Zeb ur Rehman" # $(git log -1 --pretty=format:'%an')
 
     - name: Push Commits to Another Repository
       run: |
