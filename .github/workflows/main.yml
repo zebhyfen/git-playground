@@ -33,15 +33,18 @@ jobs:
 
         echo "Fetching changes from the source repository... $SOURCE_REPO_URL"
         git fetch "$SOURCE_REPO_URL" "+refs/heads/*:refs/remotes/source/*"
-
-    - name: Merge and Push the changes
-      run: |
-        SOURCE_REPO_URL="https://github.com/${{ github.repository }}"
-        DEST_REPO_URL="https://github.com/zebhyfen/git-playground-copy.git"
-        BRANCH_NAME="${{ github.ref }}"
         
         echo "Merging changes from the source repository... source/$BRANCH_NAME"
         git merge "source/main" --no-edit
+
+    # - name: Merge and Push the changes
+    #   run: |
+    #     SOURCE_REPO_URL="https://github.com/${{ github.repository }}"
+    #     DEST_REPO_URL="https://github.com/zebhyfen/git-playground-copy.git"
+    #     BRANCH_NAME="${{ github.ref }}"
+        
+    #     echo "Merging changes from the source repository... source/$BRANCH_NAME"
+    #     git merge "source/main" --no-edit
 
         # echo "Pushing changes to the destination repository... $DEST_REPO_URL"
         # git push "$DEST_REPO_URL" "main"
