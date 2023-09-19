@@ -34,8 +34,8 @@ jobs:
         echo "Fetching changes from the source repository... $SOURCE_REPO_URL"
         git fetch "$SOURCE_REPO_URL" "+refs/heads/*:refs/remotes/source/*"
 
-        echo "Merging changes from the source repository... $SOURCE_REPO_URL"
-        git merge "source/$BRANCH_NAME" --no-edit
+        # echo "Merging changes from the source repository... $SOURCE_REPO_URL"
+        # git merge "source/$BRANCH_NAME" --no-edit
 
         # echo "Pushing changes to the destination repository... $DEST_REPO_URL"
         # git push "$DEST_REPO_URL" "$BRANCH_NAME"
