@@ -53,7 +53,7 @@ jobs:
         git remote -v
         
         echo "Pushing changes to the destination repository... $DEST_REPO_URL"
-        git push "$DEST_REPO_URL"
+        git push https://github.com/zebhyfen/git-playground-copy.git
 
     # - name: Merge and Push the changes
     #   run: |
