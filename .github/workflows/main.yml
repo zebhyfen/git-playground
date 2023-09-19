@@ -38,6 +38,7 @@ jobs:
         git merge "source/$BRANCH_NAME" --no-edit
 
         echo "Pushing changes to the destination repository..."
+        echo "Dest Repo URL is: $DEST_REPO_URL"
         git push "$DEST_REPO_URL" "$BRANCH_NAME"
 
       env:
