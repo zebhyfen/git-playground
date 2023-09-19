@@ -1,17 +1,45 @@
-name: Sync Workflow
+name: Sync Repository
+
 on:
   push:
-    branches: 
+    branches:
       - main
 
 jobs:
-  build:
+  push_to_another_repo:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout Code
+      uses: actions/checkout@v2
 
-      - name: Run a code
-        run: |
-          echo "Hello World!"
+    - name: Set Up Git
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+
+    - name: Push Commits to Another Repository
+      run: |
+        SOURCE_REPO_URL="https://github.com/${{ github.repository }}"
+        DEST_REPO_URL="https://github.com/zebhyfen/git-playground-copy.git"
+        BRANCH_NAME="${{ github.ref }}"
+        
+        echo "Cloning the destination repository..."
+        git clone "$DEST_REPO_URL" destination_repo
+        cd destination_repo
+
+        echo "Checking out the branch..."
+        git checkout -B "$BRANCH_NAME"
+
+        echo "Fetching changes from the source repository..."
+        git fetch "$SOURCE_REPO_URL" "+refs/heads/*:refs/remotes/source/*"
+
+        echo "Merging changes from the source repository..."
+        git merge "source/$BRANCH_NAME" --no-edit
+
+        echo "Pushing changes to the destination repository..."
+        git push "$DEST_REPO_URL" "$BRANCH_NAME"
+
+      env:
+        SOURCE_REPO_URL: ${{ github.event.repository.html_url }}
+        DEST_REPO_URL: ${{ secrets.DEST_REPO_URL }}
