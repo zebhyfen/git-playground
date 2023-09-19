@@ -40,7 +40,7 @@ jobs:
         DEST_REPO_URL="https://github.com/zebhyfen/git-playground-copy.git"
         BRANCH_NAME="${{ github.ref }}"
         
-        echo "Merging changes from the source repository... $SOURCE_REPO_URL"
+        echo "Merging changes from the source repository... source/$BRANCH_NAME"
         git merge "source/$BRANCH_NAME" --no-edit
 
         # echo "Pushing changes to the destination repository... $DEST_REPO_URL"
