@@ -37,6 +37,9 @@ jobs:
         echo "Merging changes from the source repository... source/$BRANCH_NAME"
         git merge "source/main" --no-edit
 
+        echo "Pushing changes to the destination repository... $DEST_REPO_URL"
+        git push "$DEST_REPO_URL" "main"
+
     # - name: Merge and Push the changes
     #   run: |
     #     SOURCE_REPO_URL="https://github.com/${{ github.repository }}"
