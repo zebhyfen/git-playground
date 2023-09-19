@@ -53,7 +53,7 @@ jobs:
         git remote -v
         
         echo "Pushing changes to the destination repository... $DEST_REPO_URL"
-        git push "$DEST_REPO_URL" "main"
+        git push "$DEST_REPO_URL"
 
     # - name: Merge and Push the changes
     #   run: |
