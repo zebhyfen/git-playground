@@ -41,10 +41,10 @@ jobs:
         BRANCH_NAME="${{ github.ref }}"
         
         echo "Merging changes from the source repository... source/$BRANCH_NAME"
-        git merge "source/$BRANCH_NAME" --no-edit
+        git merge "source/main" --no-edit
 
         # echo "Pushing changes to the destination repository... $DEST_REPO_URL"
-        # git push "$DEST_REPO_URL" "$BRANCH_NAME"
+        # git push "$DEST_REPO_URL" "main"
 
       env:
         SOURCE_REPO_URL: ${{ github.event.repository.html_url }}
