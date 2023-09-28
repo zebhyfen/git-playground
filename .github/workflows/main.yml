@@ -2,8 +2,8 @@ name: Sync Repository
 
 on:
   push:
-    branches:
-      - main
+    branches: ['main']
+    paths: ['front/**']
 
   workflow_dispatch:
     inputs:
